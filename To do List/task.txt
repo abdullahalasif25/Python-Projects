@@ -1,4 +1,2 @@
 Machine Learning
-Deep learning
 Reinforcement Learning
-Data Analysis

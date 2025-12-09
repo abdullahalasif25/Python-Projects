@@ -1,10 +1,17 @@
 class Atm:
+
+    # Class variable
+    __counter = 1
     def __init__(self):
-        self.pin =1234
-        self.balance = 50000
-        self.menu()
+
+        #instance variable
+        self.__pin =1234
+        self.__balance = 50000
+        self.sl = Atm.__counter
+        Atm.__counter = Atm.__counter + 1
+        #self.__menu()
     
-    def menu(self):
+    def __menu(self):
         user_input = int(input("""
                            What's on your mind?
                            1. Change pin
@@ -26,11 +33,11 @@ class Atm:
             print("Thank you for using our system")
         else:
             print("Invalid Input")
-            self.menu()
+            self.__menu()
 
     def check_pin(self):
         temp = int(input("Enter your pin: "))
-        if self.pin == temp:
+        if self.__pin == temp:
             return True
         else:
             return False
@@ -38,39 +45,39 @@ class Atm:
     def change_pin(self):
         if(self.check_pin()):
             temp2 = int(input("Enter a new pin: "))
-            self.pin = temp2
+            self.__pin = temp2
             print("Print created successfully")
         else:
             print("Invalid Pin")
-        self.menu()
+        self.__menu()
 
     def deposit(self):
         if (self.check_pin()):
             amount = int(input("Enter deposit amount: "))
-            self.balance += amount
-            print(f"Deposit Successfull and your current balance is {self.balance} ")
+            self.__balance += amount
+            print(f"Deposit Successfull and your current balance is {self.__balance} ")
         else:
             print("Invalid Pin")
-        self.menu()
+        self.__menu()
 
     def withdraw(self):
         if (self.check_pin()):
             amount = int(input("Enter the withrawal amount: "))
-            if amount <= self.balance:
-                self.balance -= amount
-                print(f"Withdrawal successful and your current balance is {self.balance}")
+            if amount <= self.__balance:
+                self.__balance -= amount
+                print(f"Withdrawal successful and your current balance is {self.__balance}")
             else:
                 print("Insufficient amount")
         else:
             print("Invalid pin")
-        self.menu()
+        self.__menu()
     
     def check_balance(self):
         if(self.check_pin()):
-            print(f"Your current balance is {self.balance}")
+            print(f"Your current balance is {self.__balance}")
         else:
             print("Invalid pin")
-        self.menu()        
+        self.__menu()        
         
 
         
